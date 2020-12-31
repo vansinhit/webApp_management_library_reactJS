@@ -7,15 +7,7 @@ import Navbar from './Nvarbar';
 
 
 const index = (props) => {
-  React.useEffect(()=>{
-    const token = localStorage.getItem("CC _Token");
-    console.log(token);
-    if(!token){
-      props.history.push('/login');
-    }  else  {
-      props.history.push('/home');
-    }
-  }, [0]);
+
   return (
     <Container maxWidth="lg">
         <Navbar />
