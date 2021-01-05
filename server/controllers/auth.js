@@ -8,7 +8,7 @@ export const register = async (req, res) => {
     if(!emailRegex.test(email)) throw "Email not support";
     if(password.length < 6) throw "password must be atless 6 charters long";
 
-    const userCheck = await User.findOne({
+    const userCheck = await User.findOne({ 
         email,
     });
     if(userCheck) throw "User with same email already exits";
@@ -29,11 +29,13 @@ export const login = async (req, res) => {
       password,
     });
   
-    if (!user) throw "Email and Password did not match.";
-  
-    const token = await jwt.sign({ id: user.id }, process.env.SECRET);
+    if (!user){
+        res.status(404).json({
+            message: "wrong email and password"
+        })
+    } 
+
   
     res.status(201).json({
-        message: "login successfully!",
-        token});
+        message: "login successfully!"});
 };

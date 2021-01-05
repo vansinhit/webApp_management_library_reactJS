@@ -4,7 +4,7 @@ import React from 'react';
 import { Container } from '@material-ui/core';
 import axios from 'axios'
 import makeToast from '../../Toast.js';
-
+import {HashLink as Link} from 'react-router-hash-link';
 
 import Navbar from '../Nvabar/Nvarbar.js';
 
@@ -38,6 +38,10 @@ const Login = (props) => {
           makeToast("error", err.response.data.message);
       });
   };
+
+  const registerUser = () => {
+    props.history.push("/register");
+  }
   return (
         <Container>
             <Navbar /> 
@@ -54,6 +58,7 @@ const Login = (props) => {
                   <input type = "password" name = "password" id="password" placeholder = "Your Password" ref={passwordRef}/>
                 </div>
                 <button onClick={loginUser}>Login</button>
+                <button onClick={registerUser} >Register</button>
               </div>
             </div>
         </Container>

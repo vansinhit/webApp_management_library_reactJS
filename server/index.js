@@ -13,9 +13,11 @@ require("dotenv").config();
 app.use(bodyParser.json({ limit: '30mb', extended: true }))
 app.use(bodyParser.urlencoded({ limit: '30mb', extended: true }))
 app.use(cors());
-
+const path = require('path');
 app.use('/posts', posrRotes);
 app.use('/user', authlogin);
+
+
 
 const CONNECTION_URL = 'mongodb+srv://sa:1234567890@cluster0.krqbj.mongodb.net/<dbname>?retryWrites=true&w=majority';
 const PORT = process.env.PORT || 5000;
